@@ -64,20 +64,13 @@ function MapUpdater({
   zoom?: number;
 }) {
   const map = useMap();
-  const prevRef = useRef(center);
 
   useEffect(() => {
-    if (
-      center[0] !== prevRef.current[0] ||
-      center[1] !== prevRef.current[1]
-    ) {
-      map.flyTo(center, zoom ?? map.getZoom(), {
-        duration: 1.2,
-        easeLinearity: 0.25,
-      });
-      prevRef.current = center;
-    }
-  }, [center, zoom, map]);
+    map.flyTo(center, zoom ?? map.getZoom(), {
+      duration: 1.2,
+      easeLinearity: 0.25,
+    });
+  }, [center[0], center[1], zoom, map]);
 
   return null;
 }
@@ -208,12 +201,7 @@ export function AgentTacticalMap({
   target: { lat: number; lng: number };
   radius: number;
 }) {
-  const center: [number, number] = userLocation
-    ? [
-        (userLocation.lat + target.lat) / 2,
-        (userLocation.lng + target.lng) / 2,
-      ]
-    : [target.lat, target.lng];
+  const center: [number, number] = [target.lat, target.lng];
 
   return (
     <div className="relative w-full h-full bg-[#0A0E17]">
@@ -276,8 +264,6 @@ export function AgentTacticalMap({
             dashArray: '6, 6',
           }}
         />
-
-        {userLocation && <MapUpdater center={center} zoom={15} />}
       </MapContainer>
     </div>
   );

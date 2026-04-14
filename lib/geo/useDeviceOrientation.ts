@@ -23,28 +23,42 @@ export function useDeviceOrientation() {
   const [permissionGranted, setPermissionGranted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
+const handleOrientation = useCallback((event: DeviceOrientationEvent | any) => {    
     // Try to get compass heading from different sources
     let heading: number | null = null;
+    let isAbsolute = event.absolute;
 
     // webkitCompassHeading is available on iOS Safari
-    const iosHeading = (event as any).webkitCompassHeading;
+    const iosHeading = event.webkitCompassHeading;
     if (iosHeading !== undefined && iosHeading !== null) {
       heading = iosHeading;
+      isAbsolute = true;
     }
-    // For Android/other: use alpha if absolute orientation is available
+    // For Android/other
     else if (event.alpha !== null) {
-      // alpha gives compass heading when absolute is true
-      heading = event.absolute ? (360 - event.alpha) % 360 : null;
+      // On Android Chrome, absolute is false for deviceorientation, but true for deviceorientationabsolute 
+      // (or at least it's the absolute event).
+      // We will prefer the event if it's absolute, or if it's the specific absolute event.
+      if (event.type === 'deviceorientationabsolute') {
+        isAbsolute = true;
+      }
+
+      heading = (360 - event.alpha) % 360;
     }
 
-    setOrientation({
-      alpha: event.alpha,
-      beta: event.beta,
-      gamma: event.gamma,
-      heading,
-      absolute: event.absolute,
-      available: true,
+    setOrientation((prev) => {
+      // If we already have an absolute reading and this event is relative, don't overwrite the heading!
+      if (prev.absolute && !isAbsolute) {
+        return prev;
+      }
+      return {
+        alpha: event.alpha,
+        beta: event.beta,
+        gamma: event.gamma,
+        heading,
+        absolute: isAbsolute,
+        available: true,
+      };
     });
   }, []);
 
@@ -75,12 +89,14 @@ export function useDeviceOrientation() {
     } else {
       // Non-iOS devices: just add listener
       setPermissionGranted(true);
+      window.addEventListener('deviceorientationabsolute', handleOrientation, true);
       window.addEventListener('deviceorientation', handleOrientation, true);
       return true;
     }
   }, [handleOrientation]);
 
   const removeListener = useCallback(() => {
+    window.removeEventListener('deviceorientationabsolute', handleOrientation, true);
     window.removeEventListener('deviceorientation', handleOrientation, true);
   }, [handleOrientation]);
 

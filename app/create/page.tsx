@@ -174,8 +174,8 @@ export default function CreatePage() {
           </div>
 
           {/* Bottom Control Panel */}
-          <div className="bg-[#020408] sm:absolute sm:bottom-8 sm:left-0 sm:right-0 sm:z-[1000] p-4 sm:bg-transparent pointer-events-none">
-            <div className="glass-panel-strong p-4 sm:p-6 rounded-2xl w-full max-w-[500px] mx-auto border-t sm:border border-white/5 shadow-2xl pointer-events-auto">
+          <div className="absolute bottom-0 left-0 right-0 sm:bottom-8 z-[1000] p-4 pointer-events-none">
+            <div className="glass-panel-strong p-4 sm:p-6 rounded-2xl w-full max-w-[500px] mx-auto border sm:border-white/5 shadow-2xl pointer-events-auto bg-[#020408]/80 backdrop-blur-xl">
               <div className="max-w-[700px] mx-auto">
                 {!target ? (
                   <div className="text-center py-4">

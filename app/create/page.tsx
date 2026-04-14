@@ -151,7 +151,7 @@ export default function CreatePage() {
   // ═══════════════════════════════════════════════════════════
   if (step === 'map') {
     return (
-      <div className="bg-[#020408] h-[calc(100dvh-64px)] flex flex-col">
+      <div className="bg-[#020408] h-[calc(100dvh-64px)] flex flex-col relative w-full overflow-hidden">
         {/* Header */}
         <div className="pt-8 pb-6 px-4 sm:px-6 text-center animate-fade-in-down shrink-0">
           <StepIndicator currentStep={currentStepNumber} totalSteps={4} />
@@ -164,18 +164,19 @@ export default function CreatePage() {
         </div>
 
         {/* Map Container */}
-        <div className="flex-1 w-full relative overflow-hidden">
-          <div className="absolute inset-0 z-0 w-full h-full">
+        <div className="flex-1 w-full relative z-0 min-h-0">
+          <div className="absolute inset-0 w-full h-full">
             <OperatorMap
               target={target}
               onTargetSelect={handleTargetSelect}
               radius={radius}
             />
           </div>
+        </div>
 
-          {/* Bottom Control Panel */}
-          <div className="absolute bottom-0 left-0 right-0 sm:bottom-8 z-[1000] p-4 pointer-events-none">
-            <div className="glass-panel-strong p-4 sm:p-6 rounded-2xl w-full max-w-[500px] mx-auto border sm:border-white/5 shadow-2xl pointer-events-auto bg-[#020408]/80 backdrop-blur-xl">
+        {/* Bottom Control Panel */}
+        <div className="absolute bottom-0 left-0 right-0 sm:bottom-8 z-[1000] p-4 pb-[max(1rem,env(safe-area-inset-bottom))] pointer-events-none">
+          <div className="glass-panel-strong p-4 sm:p-6 rounded-2xl w-full max-w-[500px] mx-auto border sm:border-white/5 shadow-2xl pointer-events-auto bg-[#020408]/80 backdrop-blur-xl">
               <div className="max-w-[700px] mx-auto">
                 {!target ? (
                   <div className="text-center py-4">
@@ -258,7 +259,6 @@ export default function CreatePage() {
               </div>
             </div>
           </div>
-        </div>
       </div>
     );
   }

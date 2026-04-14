@@ -151,9 +151,9 @@ export default function CreatePage() {
   // ═══════════════════════════════════════════════════════════
   if (step === 'map') {
     return (
-      <div className="bg-[#020408] min-h-[calc(100dvh-64px)] flex flex-col">
+      <div className="bg-[#020408] h-[calc(100dvh-64px)] flex flex-col">
         {/* Header */}
-        <div className="pt-8 pb-6 px-4 sm:px-6 text-center animate-fade-in-down">
+        <div className="pt-8 pb-6 px-4 sm:px-6 text-center animate-fade-in-down shrink-0">
           <StepIndicator currentStep={currentStepNumber} totalSteps={4} />
           <h1 className="section-heading text-white mt-6 mb-2">
             Set target coordinates
@@ -164,20 +164,18 @@ export default function CreatePage() {
         </div>
 
         {/* Map Container */}
-        <div className="flex-1 w-full relative flex flex-col min-h-[60vh] overflow-hidden">
-          <div className="flex-1 w-full h-full relative min-h-[60vh]">
-            <div className="absolute inset-0 z-0 w-full h-full">
-              <OperatorMap
-                target={target}
-                onTargetSelect={handleTargetSelect}
-                radius={radius}
-              />
-            </div>
+        <div className="flex-1 w-full relative overflow-hidden">
+          <div className="absolute inset-0 z-0 w-full h-full">
+            <OperatorMap
+              target={target}
+              onTargetSelect={handleTargetSelect}
+              radius={radius}
+            />
           </div>
 
           {/* Bottom Control Panel */}
-          <div className="bg-[#020408] sm:absolute sm:bottom-0 sm:left-0 sm:right-0 sm:z-[1000] p-4 sm:bg-transparent">
-            <div className="glass-panel-strong p-4 sm:p-6 rounded-2xl w-full max-w-[900px] mx-auto border-t sm:border border-white/5 shadow-2xl">
+          <div className="bg-[#020408] sm:absolute sm:bottom-8 sm:left-0 sm:right-0 sm:z-[1000] p-4 sm:bg-transparent pointer-events-none">
+            <div className="glass-panel-strong p-4 sm:p-6 rounded-2xl w-full max-w-[500px] mx-auto border-t sm:border border-white/5 shadow-2xl pointer-events-auto">
               <div className="max-w-[700px] mx-auto">
                 {!target ? (
                   <div className="text-center py-4">

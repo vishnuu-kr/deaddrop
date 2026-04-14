@@ -51,9 +51,9 @@ const userIcon = L.divIcon({
   popupAnchor: [0, -14],
 });
 
-// CartoDB Dark Matter — free, open-source, no API key
-const DARK_MATTER_URL =
-  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+// Esri World Imagery - Free for reasonable usage, no API key needed
+const TACTICAL_SATELLITE_URL =
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
 
 // Map updater for fly-to behavior
 function MapUpdater({
@@ -120,11 +120,21 @@ export function OperatorMap({
   onTargetSelect: (lat: number, lng: number) => void;
   radius: number;
 }) {
+  const mapRef = useRef<L.Map>(null);
+
+  useEffect(() => {
+    // On mount, locate user and fly to them if no target is set yet
+    if (!target && mapRef.current) {
+      mapRef.current.locate({ setView: true, maxZoom: 14 });
+    }
+  }, [target]);
+
   return (
     <div className="relative w-full h-full bg-[#0A0E17]">
       <MapContainer
         center={[40.7128, -74.006]}
-        zoom={2}
+        zoom={14}
+        ref={mapRef}
         style={{ width: '100%', height: '100%', minHeight: '400px', zIndex: 1 }}
         zoomControl={false}
         zoomAnimation={true}
@@ -134,8 +144,9 @@ export function OperatorMap({
         <MapResizer />
         <ZoomControl position="bottomright" />
         <TileLayer
-          url={DARK_MATTER_URL}
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>'
+          url={TACTICAL_SATELLITE_URL}
+          attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+          className="map-tiles"
         />
 
         <ClickHandler onSelect={onTargetSelect} />
@@ -218,8 +229,9 @@ export function AgentTacticalMap({
         <MapResizer />
         <ZoomControl position="bottomright" />
         <TileLayer
-          url={DARK_MATTER_URL}
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>'
+          url={TACTICAL_SATELLITE_URL}
+          attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+          className="map-tiles"
         />
 
         {/* User position */}

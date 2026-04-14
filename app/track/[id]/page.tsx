@@ -476,6 +476,11 @@ export default function TrackPage({ params: paramsPromise }: { params: Promise<{
 
       hasBurnedRef.current = true;
       setBurned(true);
+      
+      // Auto-destruct message from screen after 30 seconds
+      setTimeout(() => {
+        setDecryptedMessage(null);
+      }, 30000);
     } catch (err: any) {
       setError(err.message || 'Decryption failed.');
     } finally {
@@ -509,7 +514,7 @@ export default function TrackPage({ params: paramsPromise }: { params: Promise<{
   // ═══════════════════════════════════════════════════════════
   // BURNED STATE
   // ═══════════════════════════════════════════════════════════
-  if (burned) {
+  if (burned && !decryptedMessage) {
     return (
       <div className="bg-[#020408] min-h-[calc(100dvh-64px)] flex items-center justify-center px-4 sm:px-6">
         <div className="text-center animate-fade-in-up max-w-[480px]">
@@ -632,7 +637,7 @@ export default function TrackPage({ params: paramsPromise }: { params: Promise<{
           </div>
 
           <p className="micro-text text-white/25 mb-8">
-            This link has been burned and will self-destruct.
+            This link has been burned and the message will self-destruct in 30 seconds.
           </p>
 
           <button

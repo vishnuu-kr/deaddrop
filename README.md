@@ -1,19 +1,19 @@
-# DeadDrop — Ghost Protocol Messaging
+﻿# DeadDrop - Ghost Protocol Messaging
 
 > *Zero accounts. Zero identities. Zero traces.*
 
-DeadDrop is an anonymous, link-based geofenced messaging platform built on a **"ghost protocol"** architecture. The Operator creates encrypted dead-drops at any location on Earth. The Agent receives a burner link — the *only* thing that can decrypt the message. Once read, the drop self-destructs permanently.
+DeadDrop is an anonymous, link-based geofenced messaging platform built on a **"ghost protocol"** architecture. The Operator creates encrypted dead-drops at any location on Earth. The Agent receives a burner link - the *only* thing that can decrypt the message. Once read, the drop self-destructs permanently.
 
 ## Architecture
 
 ```
 Operator (Sender)                    Server (Blind Courier)              Agent (Recipient)
-─────────────────                    ──────────────────                  ──────────────────
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€                    â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€                  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 1. Click map to target
 2. Type message
-3. Generate AES-256 key    ───►    Store encrypted blob              Fetch encrypted blob
+3. Generate AES-256 key    â”€â”€â”€â–º    Store encrypted blob              Fetch encrypted blob
    (Web Crypto API)                 + coordinates only                 + proximity check
-4. Build burner link                                      ◄───       Decrypt with URL hash key
+4. Build burner link                                      â-„â”€â”€â”€       Decrypt with URL hash key
    key in #hash (never sent)                                       5. Read message
                                                                       6. BURN (server deletes payload)
 ```
@@ -36,7 +36,7 @@ Operator (Sender)                    Server (Blind Courier)              Agent (
 
 ## Database Schema
 
-A single lean table. The server is a blind courier — it knows nothing about the content.
+A single lean table. The server is a blind courier - it knows nothing about the content.
 
 ```sql
 CREATE TABLE dead_drops (
@@ -57,7 +57,7 @@ CREATE TABLE dead_drops (
 ### 1. Set Up Supabase
 
 1. Create a project at [supabase.com](https://supabase.com)
-2. Enable the **PostGIS** extension (Database → Extensions)
+2. Enable the **PostGIS** extension (Database â†’ Extensions)
 3. Run the SQL in `database/schema.sql` in the SQL Editor
 
 ### 2. Configure Environment
@@ -86,9 +86,9 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ### Operator Flow (Create)
 
-1. Open the app → click **[ CREATE DEAD DROP ]**
+1. Open the app â†’ click **[ CREATE DEAD DROP ]**
 2. Click anywhere on the map (or use your current location)
-3. Adjust the unlock radius (10m–500m)
+3. Adjust the unlock radius (10mâ€“500m)
 4. Type your message
 5. Click **[ DEPLOY DEAD DROP ]**
    - A random AES-256 key is generated in your browser
@@ -115,7 +115,7 @@ When the Agent is within range:
 1. The client fetches the encrypted payload from the database
 2. The message is decrypted locally using the URL hash key
 3. The client calls `POST /api/burn` with their coordinates
-4. **Server validates proximity** (zero-trust — prevents spoofing)
+4. **Server validates proximity** (zero-trust - prevents spoofing)
 5. If valid, the server permanently deletes the encrypted payload
 6. The Agent sees the decrypted message with a "BURNED" confirmation
 
@@ -144,18 +144,18 @@ When the Agent is within range:
 
 ```
 dead-drop/
-├── app/
-│   ├── api/burn/          # Server-side burn endpoint (zero-trust validation)
-│   ├── create/            # Operator: map → encrypt → deploy
-│   ├── track/[id]/        # Agent: radar/map → unlock → burn
-│   ├── layout.tsx         # Root layout (no auth)
-│   └── page.tsx           # Landing page (cyberpunk terminal aesthetic)
-├── lib/
-│   ├── crypto/encryption.ts   # Web Crypto API (AES-256-GCM)
-│   ├── geo/                   # Haversine, bearing, validation
-│   └── supabase/              # Database clients
-├── database/schema.sql        # Complete PostGIS schema
-└── types/database.ts          # TypeScript definitions
+â”œâ”€â”€ app/
+â”‚   â”œâ”€â”€ api/burn/          # Server-side burn endpoint (zero-trust validation)
+â”‚   â”œâ”€â”€ create/            # Operator: map â†’ encrypt â†’ deploy
+â”‚   â”œâ”€â”€ track/[id]/        # Agent: radar/map â†’ unlock â†’ burn
+â”‚   â”œâ”€â”€ layout.tsx         # Root layout (no auth)
+â”‚   â””â”€â”€ page.tsx           # Landing page (cyberpunk terminal aesthetic)
+â”œâ”€â”€ lib/
+â”‚   â”œâ”€â”€ crypto/encryption.ts   # Web Crypto API (AES-256-GCM)
+â”‚   â”œâ”€â”€ geo/                   # Haversine, bearing, validation
+â”‚   â””â”€â”€ supabase/              # Database clients
+â”œâ”€â”€ database/schema.sql        # Complete PostGIS schema
+â””â”€â”€ types/database.ts          # TypeScript definitions
 ```
 
 ## API Routes
@@ -168,7 +168,7 @@ All other operations are performed directly against Supabase from the client (RL
 
 ## Key Concepts
 
-- **Burner Link:** `https://app.com/track/{uuid}#{key}` — The key is after the `#` and is **never transmitted to any server**
+- **Burner Link:** `https://app.com/track/{uuid}#{key}` - The key is after the `#` and is **never transmitted to any server**
 - **Zero-Knowledge:** The server stores encrypted blobs it cannot read
 - **Ghost Protocol:** No identities, no sessions, no cookies, no accounts
 - **Dead Drop:** A physical-location-based message delivery system inspired by espionage tradecraft
@@ -176,3 +176,4 @@ All other operations are performed directly against Supabase from the client (RL
 ## License
 
 MIT
+

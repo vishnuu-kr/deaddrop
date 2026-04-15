@@ -54,7 +54,7 @@ export async function decryptMessage(
 
     return new TextDecoder().decode(decrypted);
   } catch (error) {
-    throw new Error("Decryption failed — payload may have been tampered with");
+    throw new Error("Decryption failed - payload may have been tampered with");
   }
 }
 
@@ -101,7 +101,7 @@ export function base64ToArrayBuffer(base64: string): ArrayBuffer {
 }
 
 /**
- * Complete encryption flow: message → encrypted package
+ * Complete encryption flow: message â†’ encrypted package
  * Returns everything needed to store in DB + put in URL
  */
 export async function encryptPayload(
@@ -123,7 +123,7 @@ export async function encryptPayload(
 }
 
 /**
- * Complete decryption flow: encrypted package + key → message
+ * Complete decryption flow: encrypted package + key â†’ message
  */
 export async function decryptPayload(
   encryptedPayload: string,

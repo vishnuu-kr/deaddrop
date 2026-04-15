@@ -48,7 +48,7 @@ function StepIndicator({ currentStep, totalSteps }: { currentStep: number; total
                     ? 'bg-[#00FF94]/15 border-2 border-[#00FF94]/50 text-[#00FF94] shadow-[0_0_12px_rgba(0,255,148,0.15)]'
                     : 'bg-white/[0.04] border border-white/[0.08] text-white/25'
                 }`}
-                aria-label={`Step ${step.num}: ${step.label} — ${step.num < currentStep ? 'Completed' : step.num === currentStep ? 'Current' : 'Upcoming'}`}
+                aria-label={`Step ${step.num}: ${step.label} - ${step.num < currentStep ? 'Completed' : step.num === currentStep ? 'Current' : 'Upcoming'}`}
               >
                 {step.num < currentStep ? (
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -146,9 +146,9 @@ export default function CreatePage() {
 
   const currentStepNumber = step === 'map' ? 1 : step === 'message' ? 2 : step === 'deploying' ? 3 : 4;
 
-  // ═══════════════════════════════════════════════════════════
-  // STEP 1 — Map / Location
-  // ═══════════════════════════════════════════════════════════
+  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // STEP 1 - Map / Location
+  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
   if (step === 'map') {
     return (
       <div className="bg-[#020408] h-[calc(100dvh-64px)] flex flex-col relative w-full overflow-hidden">
@@ -263,9 +263,9 @@ export default function CreatePage() {
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // STEP 2 — Message / Encrypt
-  // ═══════════════════════════════════════════════════════════
+  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // STEP 2 - Message / Encrypt
+  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
   if (step === 'message') {
     return (
       <div className="bg-[#020408] min-h-[calc(100dvh-64px)] flex flex-col items-center justify-center px-4 sm:px-6 py-12">
@@ -368,9 +368,9 @@ export default function CreatePage() {
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // STEP 3 — Deploying (Loading)
-  // ═══════════════════════════════════════════════════════════
+  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // STEP 3 - Deploying (Loading)
+  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
   if (step === 'deploying') {
     return (
       <div className="bg-[#020408] min-h-[calc(100dvh-64px)] flex items-center justify-center relative overflow-hidden">
@@ -402,9 +402,9 @@ export default function CreatePage() {
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // STEP 4 — Done / Burner Link
-  // ═══════════════════════════════════════════════════════════
+  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // STEP 4 - Done / Burner Link
+  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
   return (
     <div className="bg-[#020408] min-h-[calc(100dvh-64px)] flex items-center justify-center px-4 sm:px-6 py-12">
       <div className="max-w-[560px] w-full text-center animate-fade-in-up">
@@ -475,7 +475,7 @@ export default function CreatePage() {
         {/* Info notes */}
         <div className="glass-panel-subtle p-4 mb-10 text-left space-y-3 rounded-xl">
           {[
-            { icon: 'info', text: 'The key is in the URL hash — never sent to the server.' },
+            { icon: 'info', text: 'The key is in the URL hash - never sent to the server.' },
             { icon: 'warning', text: 'This link self-destructs after first read or 24 hours.' },
           ].map((item, idx) => (
             <div key={idx} className="flex items-start gap-3">

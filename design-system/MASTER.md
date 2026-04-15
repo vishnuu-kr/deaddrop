@@ -1,4 +1,4 @@
-# DeadDrop Design System - Master
+﻿# DeadDrop Design System - Master
 
 **Product:** Anonymous geofenced messaging platform  
 **Style:** Tactical Security / Cyberpunk HUD  
@@ -23,8 +23,8 @@
 
 **Keywords:** HUD, terminal, dark mode, encrypted, military-grade, minimal, geometric, data-first  
 **Best For:** Security tools, encryption platforms, tactical applications, privacy-focused products  
-**Performance:** ✅ High (minimal effects, optimized rendering)  
-**Accessibility:** ✅ Good (high contrast, clear hierarchy)
+**Performance:** âœ… High (minimal effects, optimized rendering)  
+**Accessibility:** âœ… Good (high contrast, clear hierarchy)
 
 ### Visual Characteristics
 - Dark backgrounds with subtle grid patterns
@@ -215,40 +215,40 @@ Wide: 1440px (max content width 1200px)
 ## UX Guidelines (Priority 1-3)
 
 ### 1. Accessibility (CRITICAL)
-- ✅ Contrast ratios: 7:1+ for all text (exceeds WCAG AAA)
-- ✅ Focus states: 2px neon green outline on interactive elements
-- ✅ Keyboard navigation: Full tab support, logical order
-- ✅ Screen reader labels: All icons have aria-label
-- ✅ Reduced motion: Respects prefers-reduced-motion
+- âœ… Contrast ratios: 7:1+ for all text (exceeds WCAG AAA)
+- âœ… Focus states: 2px neon green outline on interactive elements
+- âœ… Keyboard navigation: Full tab support, logical order
+- âœ… Screen reader labels: All icons have aria-label
+- âœ… Reduced motion: Respects prefers-reduced-motion
 
 ### 2. Touch & Interaction (CRITICAL)
-- ✅ Touch targets: Minimum 44x44px
-- ✅ Spacing: 8px minimum between touch targets
-- ✅ Loading feedback: Skeleton screens + spinners
-- ✅ Button states: Disabled during async operations
-- ✅ Haptic feedback: Optional for mobile (if supported)
+- âœ… Touch targets: Minimum 44x44px
+- âœ… Spacing: 8px minimum between touch targets
+- âœ… Loading feedback: Skeleton screens + spinners
+- âœ… Button states: Disabled during async operations
+- âœ… Haptic feedback: Optional for mobile (if supported)
 
 ### 3. Performance (HIGH)
-- ✅ WebP/AVIF for any images (if added)
-- ✅ Lazy loading for below-fold content
-- ✅ Reserved space (CLS < 0.1)
-- ✅ Font-display: swap for fast text rendering
-- ✅ Code splitting by route (Next.js dynamic imports)
+- âœ… WebP/AVIF for any images (if added)
+- âœ… Lazy loading for below-fold content
+- âœ… Reserved space (CLS < 0.1)
+- âœ… Font-display: swap for fast text rendering
+- âœ… Code splitting by route (Next.js dynamic imports)
 
 ---
 
 ## Anti-Patterns (AVOID)
 
-❌ Light mode as primary theme (breaks tactical immersion)  
-❌ Emoji icons (use SVG: Lucide, Heroicons)  
-❌ Raw hex colors in components (use semantic tokens)  
-❌ Mixing flat and skeuomorphic styles randomly  
-❌ Poor data visualization (clear labels, tooltips)  
-❌ Low contrast text (< 4.5:1 ratio)  
-❌ Hover-only interactions (mobile unfriendly)  
+âŒ Light mode as primary theme (breaks tactical immersion)  
+âŒ Emoji icons (use SVG: Lucide, Heroicons)  
+âŒ Raw hex colors in components (use semantic tokens)  
+âŒ Mixing flat and skeuomorphic styles randomly  
+âŒ Poor data visualization (clear labels, tooltips)  
+âŒ Low contrast text (< 4.5:1 ratio)  
+âŒ Hover-only interactions (mobile unfriendly)  
  Instant state changes (0ms transitions)  
-❌ Decorative animations (all motion must convey meaning)  
-❌ Horizontal scroll on mobile  
+âŒ Decorative animations (all motion must convey meaning)  
+âŒ Horizontal scroll on mobile  
 
 ---
 
@@ -314,4 +314,4 @@ theme: {
 
 **Last Updated:** 2026-04-13  
 **Version:** 2.0.0 (Complete redesign - Tactical Security theme)  
-**Status:** ✅ Ready for implementation
+**Status:** âœ… Ready for implementation

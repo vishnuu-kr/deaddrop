@@ -1,19 +1,19 @@
-# DeadDrop Quick Start Guide
+﻿# DeadDrop Quick Start Guide
 
-## 🚀 Get Started in 5 Minutes
+## ðŸš€ Get Started in 5 Minutes
 
 ### Step 1: Set Up Supabase (2 minutes)
 
 1. Go to [supabase.com](https://supabase.com) and create a free account
 2. Create a new project
 3. Wait for your database to be provisioned
-4. Go to **Database** → **Extensions** and enable **postgis**
+4. Go to **Database** â†’ **Extensions** and enable **postgis**
 5. Go to **SQL Editor** and paste the contents of `database/schema.sql`
 6. Click **Run** to execute the schema
 
 ### Step 2: Get Your API Keys (1 minute)
 
-1. In your Supabase project, go to **Project Settings** → **API**
+1. In your Supabase project, go to **Project Settings** â†’ **API**
 2. Copy these values:
    - **Project URL** (e.g., `https://xxxxx.supabase.co`)
    - **anon/public key**
@@ -70,7 +70,7 @@ Open [http://localhost:3000](http://localhost:3000)
    - Click on your message
    - If you're within 100m of the selected location, click "Unlock Message"
 
-## 📱 Deploy to Production
+## ðŸ“± Deploy to Production
 
 ### Option 1: Vercel (Recommended)
 
@@ -99,7 +99,7 @@ npm start
 
 Deploy on any Node.js hosting service.
 
-## 🔧 Troubleshooting
+## ðŸ”§ Troubleshooting
 
 ### "Missing Supabase environment variables"
 - Make sure `.env.local` exists and has valid values
@@ -119,21 +119,21 @@ Deploy on any Node.js hosting service.
 - For testing, create messages very close to your current location
 - Increase the unlock radius for easier testing
 
-## 📚 Next Steps
+## ðŸ“š Next Steps
 
 - Read the full [README.md](README.md) for detailed documentation
 - Explore the `database/schema.sql` for database structure
 - Check out the API routes in `app/api/`
 - Customize the UI in the component files
 
-## 💡 Tips
+## ðŸ’¡ Tips
 
 - **Testing:** Use your own username to send messages to yourself for easy testing
 - **Location:** The app works best outdoors with real GPS. Desktop browsers use less accurate IP-based location
 - **PWA:** On mobile, "Add to Home Screen" for a native app experience
 - **Security:** Change the encryption key before deploying to production!
 
-## 🆘 Need Help?
+## ðŸ†˜ Need Help?
 
 - Check browser console (F12) for errors
 - Review the Supabase logs in your dashboard
@@ -141,4 +141,4 @@ Deploy on any Node.js hosting service.
 
 ---
 
-Happy dropping! 📍🔐
+Happy dropping! ðŸ“ðŸ”

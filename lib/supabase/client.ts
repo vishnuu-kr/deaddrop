@@ -5,7 +5,7 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('⚠️ Missing Supabase client environment variables. Ensure they are set in production.');
+  console.warn('âš ï¸ Missing Supabase client environment variables. Ensure they are set in production.');
 }
 
 export const supabase = createClient<Database>(

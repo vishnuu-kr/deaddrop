@@ -75,7 +75,7 @@ function MapUpdater({
   return null;
 }
 
-// Map resizer — forces Leaflet to recalculate container size after mount
+// Map resizer - forces Leaflet to recalculate container size after mount
 function MapResizer() {
   const map = useMap();
   useEffect(() => {
@@ -102,7 +102,7 @@ function StyledPopup({ children }: { children: React.ReactNode }) {
 }
 
 // ============================================================
-// OPERATOR MAP — Click to target, select radius
+// OPERATOR MAP - Click to target, select radius
 // ============================================================
 export function OperatorMap({
   target,
@@ -190,7 +190,7 @@ function ClickHandler({
 }
 
 // ============================================================
-// AGENT TACTICAL MAP — Show user + target + radius
+// AGENT TACTICAL MAP - Show user + target + radius
 // ============================================================
 export function AgentTacticalMap({
   userLocation,

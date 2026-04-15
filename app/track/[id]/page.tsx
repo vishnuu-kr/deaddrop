@@ -35,7 +35,7 @@ function MapSkeleton() {
 const RADAR_SWITCH_DISTANCE = 500;
 
 // ============================================================
-// Tactical Compass — Device Orientation Aware (SVG Redesign)
+// Tactical Compass - Device Orientation Aware (SVG Redesign)
 // ============================================================
 function TacticalCompass({
   distance,

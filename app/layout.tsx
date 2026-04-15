@@ -1,16 +1,16 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Archivo, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import AppleNav from '@/components/AppleNav';
 
-const inter = Inter({
-  variable: '--font-inter',
+const archivo = Archivo({
+  variable: '--font-archivo',
   subsets: ['latin'],
   display: 'swap',
 });
 
-const jetbrains = JetBrains_Mono({
-  variable: '--font-jetbrains',
+const spaceGrotesk = Space_Grotesk({
+  variable: '--font-space',
   subsets: ['latin'],
   display: 'swap',
 });
@@ -20,12 +20,12 @@ export const metadata: Metadata = {
   description: 'Encrypted dead-drops. Anonymous. Ephemeral. Untraceable.',
   manifest: '/manifest.json',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/icon.svg',
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0A0E17',
+  themeColor: '#020617',
   width: 'device-width',
   initialScale: 1,
 };
@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${jetbrains.variable} antialiased bg-[#020408] min-h-[100dvh]`}
+        className={`${archivo.variable} ${spaceGrotesk.variable} antialiased bg-[#020617] text-[#F8FAFC] min-h-[100dvh]`}
       >
         <AppleNav />
         <main className="pt-16">{children}</main>
@@ -46,3 +46,4 @@ export default function RootLayout({
     </html>
   );
 }
+

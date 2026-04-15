@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
 
     if (burnError || !burned) {
       return NextResponse.json(
-        { error: 'Failed to burn drop — it may have already been destroyed' },
+        { error: 'Failed to burn drop - it may have already been destroyed' },
         { status: 410 }
       );
     }
